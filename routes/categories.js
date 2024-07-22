@@ -6,15 +6,15 @@ const router = express.Router();
 // /api/v1/categories
 router.get("/", (req, res) => {
   res.json({
-    message: "Hello World GET",
+    message: "From Method GET",
     data: [
       {
         id: 1,
-        name: "IPhone",
+        name: "Realme",
       },
       {
         id: 2,
-        name: "Samsung",
+        name: "Xiaomi",
       },
     ],
   });
