@@ -9,7 +9,11 @@ app.get("/api/v1/categories", (req, res) => {
 });
 
 app.post("/api/v1/categories", (req, res) => {
-  res.send("Hello From POST");
+  res.send("Response From POST");
+});
+
+app.get("/api/v1/categories/:nama", (req, res) => {
+  res.send(`Endpoint from route params ${req.params.nama}`);
 });
 
 // server
