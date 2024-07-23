@@ -9,7 +9,7 @@ const {
 // endpoint bisa sama, asalkan method nya berbeda
 // /api/v1/categories
 router.get("/", getAllCategories);
-
+// atas bawah ini berguna untuk crud
 router.post("/", storeCategory);
 
 // kalau ada tambahan di letakan di atas :nama
