@@ -1,28 +1,16 @@
 const express = require("express");
 const router = express.Router();
+const {
+  getAllCategories,
+  storeCategory,
+} = require("../controllers/categoryController");
 
 // routing
 // endpoint bisa sama, asalkan method nya berbeda
 // /api/v1/categories
-router.get("/", (req, res) => {
-  res.json({
-    message: "From Method GET",
-    data: [
-      {
-        id: 1,
-        name: "Realme",
-      },
-      {
-        id: 2,
-        name: "Xiaomi",
-      },
-    ],
-  });
-});
+router.get("/", getAllCategories);
 
-router.post("/", (req, res) => {
-  res.send("Response From POST");
-});
+router.post("/", storeCategory);
 
 // kalau ada tambahan di letakan di atas :nama
 // /api/v1/categories/filterData
