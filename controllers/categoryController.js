@@ -1,4 +1,5 @@
 exports.getAllCategories = (req, res) => {
+  console.info(req.reqTime);
   res.status(200).json({
     status: "success",
     data: [
