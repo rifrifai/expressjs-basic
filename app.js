@@ -12,6 +12,8 @@ app.use(express.json());
 // next digunakan untuk melanjutkan ke code berikutnya
 //   next();
 // });
+
+// cors berfungsi juga agar endpoint bisa diakses dari luar(fe)
 app.use(morgan("dev"));
 
 // routing
