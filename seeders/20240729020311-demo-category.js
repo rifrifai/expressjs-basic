@@ -5,7 +5,7 @@ const { QueryInterface } = require("sequelize");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await QueryInterface.bulkInsert("Categories", [
+    return queryInterface.bulkInsert("Categories", [
       {
         id: 1,
         name: "IPhone",
@@ -40,11 +40,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    return queryInterface.bulkDelete("Categories", null, {});
   },
 };
