@@ -1,4 +1,4 @@
-const { category } = require("../models/category");
+const { Category } = require("../models");
 
 exports.getAllCategories = (req, res) => {
   // console.info(req.reqTime);
@@ -29,11 +29,15 @@ exports.storeCategory = async (req, res) => {
   try {
     let { name, description } = req.body;
     const newCategory = await Category.create({
-      name: name,
-      description: description,
+      name,
+      description,
       // bisa sekali pemanggilan asal namanya sama dengan enhanced object literals
       // name
       // description
+    });
+    res.status(201).json({
+      status: "success",
+      data: newCategory,
     });
   } catch (error) {
     return res.status(400).json({
