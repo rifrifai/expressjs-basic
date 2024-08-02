@@ -21,17 +21,15 @@ exports.getAllCategories = (req, res) => {
 
 // membuat validasi
 exports.storeCategory = (req, res) => {
-  let name = req.body.name;
-  let description = req.body.description;
+  // let name = req.body.name;
+  // let description = req.body.description;
 
-  if (!name && !description) {
+  try {
+    let { name, description } = req.body;
+  } catch (error) {
     return res.status(400).json({
-      status: "Failed",
-      error: "name and description is required!",
+      status: "Fail",
+      error,
     });
   }
-  return res.status(200).json({
-    status: "Success",
-    message: "Validation Success",
-  });
 };
