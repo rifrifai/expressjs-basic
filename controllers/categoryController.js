@@ -1,4 +1,4 @@
-const { Category } = require("../models");
+const { Category } = require("../models/");
 
 exports.getAllCategories = (req, res) => {
   // console.info(req.reqTime);
@@ -42,7 +42,7 @@ exports.storeCategory = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       status: "Fail",
-      error,
+      error: error.errors,
     });
   }
 };

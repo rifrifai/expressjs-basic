@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: {
           args: true,
-          msg: "Name category must be unique",
+          msg: "Name category is already exist in database!",
         },
         validate: {
           notNull: {
