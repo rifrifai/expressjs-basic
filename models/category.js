@@ -18,9 +18,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         unique: {
           args: true,
-          msg: "Name must be unique",
+          msg: "Name category must be unique",
+        },
+        validate: {
+          notNull: {
+            msg: "Name category is required",
+          },
         },
       },
+      description: DataTypes.TEXT,
     },
     {
       sequelize,
