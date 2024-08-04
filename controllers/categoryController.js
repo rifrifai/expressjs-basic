@@ -1,24 +1,34 @@
 const { Category } = require("../models/");
 
-exports.getAllCategories = (req, res) => {
+exports.getAllCategories = async (req, res) => {
+  try {
+    const categories = await Category.findAll();
+  } catch (error) {
+    return res.status(500).json({
+      status: "Fail",
+      error: "Server Error",
+    });
+  }
+
   // console.info(req.reqTime);
-  res.status(200).json({
-    status: "success",
-    data: [
-      {
-        id: 1,
-        name: "IPhone",
-      },
-      {
-        id: 2,
-        name: "PC",
-      },
-      {
-        id: 3,
-        name: "Tablet",
-      },
-    ],
-  });
+  // dummy data
+  // res.status(200).json({
+  //   status: "success",
+  //   data: [
+  //     {
+  //       id: 1,
+  //       name: "IPhone",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "PC",
+  //     },
+  //     {
+  //       id: 3,
+  //       name: "Tablet",
+  //     },
+  //   ],
+  // });
 };
 
 // membuat validasi

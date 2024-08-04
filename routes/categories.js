@@ -8,8 +8,10 @@ const {
 // routing
 // endpoint bisa sama, asalkan method nya berbeda
 // /api/v1/categories
+// read data find all
 router.get("/", getAllCategories);
-// atas bawah ini berguna untuk crud
+
+// create data
 router.post("/", storeCategory);
 
 // kalau ada tambahan di letakan di atas :nama
