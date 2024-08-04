@@ -10,6 +10,8 @@ const {
 // /api/v1/categories
 // read data find all
 router.get("/", getAllCategories);
+// detail data
+router.get("/:id", detailCategory);
 
 // create data
 router.post("/", storeCategory);

@@ -3,6 +3,10 @@ const { Category } = require("../models/");
 exports.getAllCategories = async (req, res) => {
   try {
     const categories = await Category.findAll();
+    return res.status(200).json({
+      status: "Success",
+      data: categories,
+    });
   } catch (error) {
     return res.status(500).json({
       status: "Fail",
@@ -29,6 +33,30 @@ exports.getAllCategories = async (req, res) => {
   //     },
   //   ],
   // });
+};
+
+exports.detailCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const category = await Category.findByPk(id);
+
+    if (!category) {
+      return res.status(400).json({
+        status: "Fail",
+        error: "Data Not Found",
+      });
+    }
+
+    return res.status(200).json({
+      status: "Success",
+      data: category,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: "Fail",
+      error: "Server Error",
+    });
+  }
 };
 
 // membuat validasi
