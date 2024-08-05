@@ -31,7 +31,9 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         afterValidate: (category, options) => {
-          category.name = category.name.toLowerCase();
+          if (category.name) {
+            category.name = category.name.toLowerCase();
+          }
         },
       },
       sequelize,
