@@ -3,6 +3,8 @@ const router = express.Router();
 const {
   getAllCategories,
   storeCategory,
+  detailCategory,
+  updateCategory,
 } = require("../controllers/categoryController");
 
 // routing
@@ -10,11 +12,15 @@ const {
 // /api/v1/categories
 // read data find all
 router.get("/", getAllCategories);
+
 // detail data
 router.get("/:id", detailCategory);
 
 // create data
 router.post("/", storeCategory);
+
+// update data
+router.put("/:id", updateCategory);
 
 // kalau ada tambahan di letakan di atas :nama
 // /api/v1/categories/filterData

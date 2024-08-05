@@ -84,3 +84,22 @@ exports.storeCategory = async (req, res) => {
     });
   }
 };
+
+exports.updateCategory = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Category.update(
+      { lastName: "Doe" },
+      {
+        where: {
+          lastName: null,
+        },
+      }
+    );
+  } catch (error) {
+    return res.status(500).json({
+      status: "Fail",
+      error: "Server Down",
+    });
+  }
+};
