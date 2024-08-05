@@ -88,14 +88,24 @@ exports.storeCategory = async (req, res) => {
 exports.updateCategory = async (req, res) => {
   try {
     const id = req.params.id;
-    await Category.update(
-      { lastName: "Doe" },
-      {
-        where: {
-          lastName: null,
-        },
-      }
-    );
+    await Category.update(req.body, {
+      where: {
+        id: id,
+      },
+    });
+    const newCategory = await Category.findByPk(id);
+
+    if (!newCategory) {
+      return res.status(404).json({
+        status: "Fail",
+        error: "ID Not Found!",
+      });
+    }
+
+    return res.status(200).json({
+      status: "Success",
+      data: newCategory,
+    });
   } catch (error) {
     return res.status(500).json({
       status: "Fail",
