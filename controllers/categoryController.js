@@ -74,7 +74,7 @@ exports.storeCategory = async (req, res) => {
       // description
     });
     res.status(201).json({
-      status: "success",
+      status: "Success",
       data: newCategory,
     });
   } catch (error) {
@@ -116,7 +116,30 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
   try {
-    id = req.params.id;
-    await Category.destroy({});
-  } catch (error) {}
+    const id = req.params.id;
+
+    const idCategory = await Category.findByPk(id);
+    if (!idCategory) {
+      return res.status(404).json({
+        status: "Fail",
+        error: "ID Not Found!",
+      });
+    }
+
+    await Category.destroy({
+      where: {
+        id,
+      },
+    });
+
+    return res.status(200).json({
+      status: "Success",
+      message: `Data with ID ${id} has been deleted`,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: "Fail",
+      error: "Server Down",
+    });
+  }
 };
