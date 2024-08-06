@@ -117,12 +117,11 @@ exports.updateCategory = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
   try {
     const id = req.params.id;
-
     const idCategory = await Category.findByPk(id);
     if (!idCategory) {
       return res.status(404).json({
         status: "Fail",
-        error: "ID Not Found!",
+        message: "ID Not Found!",
       });
     }
 
@@ -134,7 +133,7 @@ exports.deleteCategory = async (req, res) => {
 
     return res.status(200).json({
       status: "Success",
-      message: `Data with ID ${id} has been deleted`,
+      message: `ID ${id} has been deleted`,
     });
   } catch (error) {
     return res.status(500).json({
