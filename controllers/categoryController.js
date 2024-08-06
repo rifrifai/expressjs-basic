@@ -113,3 +113,10 @@ exports.updateCategory = async (req, res) => {
     });
   }
 };
+
+exports.deleteCategory = async (req, res) => {
+  try {
+    id = req.params.id;
+    await Category.destroy({});
+  } catch (error) {}
+};

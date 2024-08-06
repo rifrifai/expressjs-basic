@@ -5,6 +5,7 @@ const {
   storeCategory,
   detailCategory,
   updateCategory,
+  deleteCategory,
 } = require("../controllers/categoryController");
 
 // routing
@@ -21,6 +22,9 @@ router.post("/", storeCategory);
 
 // update data
 router.put("/:id", updateCategory);
+
+// delete data
+router.delete("/:id", deleteCategory);
 
 // kalau ada tambahan di letakan di atas :nama
 // /api/v1/categories/filterData
