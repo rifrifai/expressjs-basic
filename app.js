@@ -19,6 +19,7 @@ app.use(express.json());
 // cors berfungsi juga agar endpoint bisa diakses dari luar(fe)
 app.use(morgan("dev"));
 app.use(cors());
+
 // routing
 app.use("/api/v1/categories", CategoriesRouter);
 
