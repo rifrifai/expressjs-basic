@@ -1,6 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
-const { Sequelize } = require(".");
+const { Model, Sequelize } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Role extends Model {
     /**
