@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const bcrypt = require("bcrypt");
 module.exports = (sequelize, DataTypes) => {
   class Siswa extends Model {
     /**
@@ -40,6 +41,14 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
+      hooks: {
+        beforeCreate: async (siswa) => {
+          if (siswa.password) {
+            const salt = await bcrypt.genSaltSync(10);
+            siswa.password = bcrypt.hashSync(siswa.password, salt);
+          }
+        },
+      },
       sequelize,
       modelName: "Siswa",
     }
