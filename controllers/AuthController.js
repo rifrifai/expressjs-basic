@@ -17,7 +17,7 @@ exports.registerSiswa = async (req, res) => {
     });
 
     return res.status(200).json({
-      status: "Success",
+      status: "Register Success",
       data: newSiswa,
     });
   } catch (error) {
