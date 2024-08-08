@@ -43,9 +43,17 @@ module.exports = (sequelize, DataTypes) => {
     {
       hooks: {
         beforeCreate: async (siswa) => {
+          // enkripsi password
           if (siswa.password) {
             const salt = await bcrypt.genSaltSync(10);
             siswa.password = bcrypt.hashSync(siswa.password, salt);
+          }
+          // ambil id dari table berdasarkan kolom name
+          if (!siswa.role_id) {
+            const roleSiswa = await sequelize.models.Role.findOne({
+              where: { name: "siswa" },
+            });
+            siswa.role_id = roleSiswa.id;
           }
         },
       },
