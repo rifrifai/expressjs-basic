@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          len: [6],
+        },
       },
       role_id: {
         type: DataTypes.UUID,
