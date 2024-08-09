@@ -8,7 +8,7 @@ exports.registerSiswa = async (req, res) => {
     if (req.body.password != req.body.passwordConfirm) {
       return res.status(400).json({
         message: "Validation Error",
-        error: "Password and Password Confirmation do not match",
+        error: ["Password and Password Confirmation do not match"],
       });
     }
 
