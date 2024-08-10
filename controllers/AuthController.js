@@ -30,3 +30,7 @@ exports.registerSiswa = async (req, res) => {
     });
   }
 };
+
+exports.loginSiswa = async (req, res) => {
+  res.send("Endpoint Login Success");
+};
