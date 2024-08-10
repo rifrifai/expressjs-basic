@@ -44,7 +44,7 @@ exports.registerSiswa = async (req, res) => {
 exports.loginSiswa = async (req, res) => {
   // 1-fungsi validasi
   if (!req.body.email || !req.body.password) {
-    return res.send(400).json({
+    return res.status(400).json({
       status: "Fail",
       message: "Validation Error",
       error: "email and password are required",
@@ -67,4 +67,9 @@ exports.loginSiswa = async (req, res) => {
 
   // 3-token di res pada login
   const token = signToken(siswaData.id);
+  return res.status(200).json({
+    status: "Success",
+    message: "Login Success",
+    token,
+  });
 };
