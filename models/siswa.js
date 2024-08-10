@@ -64,5 +64,10 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Siswa",
     }
   );
+
+  // fungsi untuk cek password
+  Siswa.prototype.CorrectPassword = async (reqPassword, passwordDB) => {
+    return await bcrypt.compareSync(reqPassword, passwordDB);
+  };
   return Siswa;
 };
