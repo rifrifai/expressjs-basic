@@ -14,13 +14,16 @@ module.exports = {
       ["id"]
     );
 
+    // siswa merupakan nama table di dalam db
     await queryInterface.bulkInsert(
-      // siswa merupakan nama table di dalam db
       "siswas",
       [
         {
-          name: "John Doe",
-          isBetaMember: false,
+          id: v4(),
+          name: "admin",
+          email: "admin@gmail.com",
+          password: bcrypt.hashSync("111213", salt),
+          role_id: adminId,
         },
       ],
       {}
@@ -28,11 +31,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete("siswas", null, {});
   },
 };
