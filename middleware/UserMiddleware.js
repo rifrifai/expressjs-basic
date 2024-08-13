@@ -14,7 +14,7 @@ exports.authMiddleware = (req, res, next) => {
     return next(
       res.status(401).json({
         status: 401,
-        message: "Unauthorized",
+        message: "Login/ Register required",
       })
     );
   }
