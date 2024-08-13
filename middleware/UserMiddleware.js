@@ -35,8 +35,15 @@ exports.authMiddleware = async (req, res, next) => {
 
   // 3- ambil data user berdasarkan kondisi decoded
   const currentSiswa = await Siswa.findByPk(decoded.id);
-  console.info(currentSiswa);
-
+  if (!currentSiswa) {
+    return next(
+      res.status(401).json({
+        status: 401,
+        message: "Siswa has been deleted",
+      })
+    );
+  }
+  // console.info(currentSiswa);
   req.siswa;
 
   next();
