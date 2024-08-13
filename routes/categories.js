@@ -7,6 +7,7 @@ const {
   updateCategory,
   deleteCategory,
 } = require("../controllers/categoryController");
+const { authMiddleware } = require("../middleware/UserMiddleware");
 
 // routing
 // endpoint bisa sama, asalkan method nya berbeda
@@ -14,8 +15,8 @@ const {
 // read data find all
 router.get("/", getAllCategories);
 
-// detail data
-router.get("/:id", detailCategory);
+// sebelum detail data akan melewati middleware dahulu
+router.get("/:id", authMiddleware, detailCategory);
 
 // create data
 router.post("/", storeCategory);
