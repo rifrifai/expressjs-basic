@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { Siswa } = require("../models");
 
 exports.authMiddleware = async (req, res, next) => {
   // 1- fungsi jika di header kita masukan token atau tidak
@@ -31,6 +32,12 @@ exports.authMiddleware = async (req, res, next) => {
       })
     );
   }
+
+  // 3- ambil data user berdasarkan kondisi decoded
+  const currentSiswa = await Siswa.findByPk(decoded.id);
+  console.info(currentSiswa);
+
+  req.siswa;
 
   next();
 };
